@@ -22,16 +22,16 @@ def movepl(curPlayer):
         plf = input(f'{curPlayer[0].capitalize()}, please select field to place mark:')
         try:
             plf = int(plf)
-        except:
-            print('!!!Only number 1-9 permit!!!')
-            continue
-        if 0 < plf <= 9:
-            while GField[(plf - 1)] == 'X' or GField[(plf - 1)] == 'O':
-                plf = int(input('Already used, please select other field:'))
+            if 0 < plf <= 9:
+                while GField[(plf - 1)] == 'X' or GField[(plf - 1)] == 'O':
+                    plf = int(input('Already used, please select other field:'))
+                else:
+                    GField[plf - 1] = curPlayer[1]
+                    chk = True
             else:
-                GField[plf - 1] = curPlayer[1]
-                chk = True
-        else:
+                print('!!!Only number 1-9 permit!!!')
+                continue
+        except:
             print('!!!Only number 1-9 permit!!!')
             continue
 
